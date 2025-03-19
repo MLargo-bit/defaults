@@ -1,0 +1,89 @@
+
+h1.title{
+  font-size: 40px;
+    color: #5A189A;
+}
+
+h1{
+    color: #5A189A;
+}
+
+h2 {
+  color: #5A189A;
+}
+
+h3{
+  color: #5A189A;
+}
+
+h4{
+  color: #5A189A;
+}
+
+#TOC {
+  background: url("main_logo.jpg");
+  background-size: contain;
+  padding-top: 80px !important;
+  background-repeat: no-repeat;
+}
+
+
+
+  
+
+
+.titulo{
+  text-align: center;
+  
+  
+}
+
+figcaption{
+  font-size: x-small;
+  
+}
+
+body{
+  text-align:justify;
+  
+}
+
+.dev{
+  text-align: center;
+  font-size: 14px;
+  
+}
+
+a {
+    color: #5A189A;
+    text-decoration: none;
+
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #fff;
+    background-color:  #5A189A;
+    border-color:  #5A189A;
+}
+
+a:hover{
+    color: #fff;
+    background-color: #5A189A;
+}
+
+.nav-tabs>li>a:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #5A189A;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+
+hr {
+margin-top: 20px;
+margin-bottom: 20px;
+border: 0;
+border-top: 1px solid #eee;
+}

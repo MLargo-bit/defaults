@@ -1,0 +1,83 @@
+---
+title: "HTML default"
+date: "`r format(Sys.time(), '%d %B, %Y, %H:%M')`"
+output:
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+        css: "../styles/styles.css"
+
+knit: (function(inputFile, encoding) {
+        rmarkdown::render(inputFile,
+                          encoding = encoding,
+    output_file = file.path("../output/HTML default.html"))})
+
+---
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+```
+
+```{r packages, include=FALSE}
+
+pacman::p_load(dplyr,
+               DT,
+               stargazer,
+               ggplot2)
+
+```
+
+```{r}
+data(iris)
+```
+
+## Display interactive Table
+
+
+```{r, tabiris, tab.cap='Iris table'}
+
+# Default option is to display 10 observations per page.
+datatable(iris, options = list(pageLength = 10),
+          rownames = FALSE)
+
+```
+
+
+## Regression models
+
+
+```{r, results = "asis"}
+
+model <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width,
+            data = iris)
+
+stargazer(model, type = "html",
+          header = FALSE)
+
+```
+
+## Figures
+
+### Barplot
+
+Figure \@ref(fig:barplot) shows a default graph.
+
+```{r barplot, fig.cap = "Iris barplot", fig.height=10}
+ggplot(iris,
+       aes(x = Species, y = Petal.Length)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "#5A189A") +
+#   coord_flip() +
+  labs(
+    x = " ",
+    y = " ",
+    caption = "Source: Iris package"
+  ) +
+  theme_minimal() +
+  theme(plot.caption = element_text(hjust = 0,  size = 7),
+        text = element_text(family = "Helvetica"))
+```

@@ -1,0 +1,81 @@
+---
+title: "Word default"
+
+author: ""
+date: ""
+output: 
+  bookdown::word_document2:
+    toc: true
+    title_page: true
+    reference_docx: "../styles/template2.docx"
+    number_sections: false
+    toc_depth: 4
+
+knit: (function(inputFile, encoding) {
+        rmarkdown::render(inputFile,
+                          encoding = encoding,
+    output_file = file.path("../output/WORD default.docx"))})
+---
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+```
+
+```{r packages, include=FALSE}
+
+pacman::p_load(dplyr,
+               flextable,
+               ggplot2)
+
+```
+
+```{r read-data, include=FALSE}
+
+data(iris)
+
+```
+
+\newpage
+
+
+# Introduction
+
+This is a Word default document
+
+## Tables
+
+Table \@ref(tab:tab-iris) is a default table.
+
+```{r, tab-iris, tab.cap='Iris table'}
+flextable(iris) %>%
+  set_table_properties(align = "center", layout = "autofit") %>%
+  add_footer_lines(values = "Source: Iris package")  %>%
+  fontsize(size = 7, part = "footer") %>%
+  font(fontname = "Helvetica", part = "all")
+```
+
+## Figures
+
+### Barplot
+
+Figure \@ref(fig:barplot) shows a default graph.
+
+```{r barplot, fig.cap = "Iris barplot", fig.height=8}
+ggplot(iris,
+       aes(x = Species, y = Petal.Length)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "#5A189A") +
+#   coord_flip() +
+  labs(
+    x = " ",
+    y = " ",
+    caption = "Source: Iris package"
+  ) +
+  theme_minimal() +
+  theme(plot.caption = element_text(hjust = 0,  size = 7),
+        text = element_text(family = "Helvetica"))
+```
